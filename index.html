@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhanavidhya J | Data Analyst Portfolio</title>
+    <style>
+        /* =====================================================
+           GLOBAL
+        ====================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        /* =====================================================
+           SCROLL BAR
+        ====================================================== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #38bdf8;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7dd3fc;
+        }
+
+        /* =====================================================
+           NAVBAR
+        ====================================================== */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            background: rgba(15, 23, 42, 0.88);
+
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
+            padding: 18px 8%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            z-index: 1000;
+
+            border-bottom: 1px solid rgba(51, 65, 85, 0.7);
+
+            animation: navbarDown 0.8s ease forwards;
+        }
+
+
+        /* LOGO */
+
+        nav .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #38bdf8;
+            cursor: pointer;
+
+            animation: logoGlow 2.5s infinite alternate;
+        }
+
+        /* NAVIGATION LINKS */
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li {
+            opacity: 0;
+
+            animation: navLink 0.6s ease forwards;
+        }
+
+        nav ul li:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        nav ul li:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        nav ul li:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        nav ul li:nth-child(4) {
+            animation-delay: 0.5s;
+        }
+
+        nav ul li:nth-child(5) {
+            animation-delay: 0.6s;
+        }
+
+        nav ul li:nth-child(6) {
+            animation-delay: 0.7s;
+        }
+
+        nav ul li:nth-child(7) {
+            animation-delay: 0.8s;
+        }
+
+        nav ul li a {
+            position: relative;
+
+            color: #e2e8f0;
+
+            text-decoration: none;
+
+            font-weight: 500;
+
+            transition: 0.3s;
+        }
+
+        nav ul li a::after {
+            content: "";
+
+            position: absolute;
+
+            width: 0;
+            height: 2px;
+
+            left: 0;
+            bottom: -6px;
+
+            background: #38bdf8;
+
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: #38bdf8;
+        }
+
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
+        }
+
+        /* =====================================================
+           HERO SECTION
+        ====================================================== */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at top right,
+                    #164e63,
+                    transparent 35%),
+                radial-gradient(circle at bottom left,
+                    #1e3a8a,
+                    transparent 35%),
+                #0f172a;
+            transition: background-position 0.3s ease;
+        }
+
+        /* FLOATING CIRCLE 1 */
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: #38bdf8;
+            top: 15%;
+            left: 5%;
+            opacity: 0.18;
+            filter: blur(5px);
+            pointer-events: none;
+            animation: floating 7s ease-in-out infinite;
+        }
+
+        /* FLOATING CIRCLE 2 */
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: #6366f1;
+            bottom: 15%;
+            right: 8%;
+            opacity: 0.2;
+            filter: blur(5px);
+            pointer-events: none;
+            animation: floating2 6s ease-in-out infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 850px;
+            width: 100%;
+        }
+
+        /* =====================================================
+           PROFILE IMAGE
+        ====================================================== */
+        .profile-image-container {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 25px;
+            padding: 5px;
+            border-radius: 50%;
+            background:
+                linear-gradient(135deg,
+                    #38bdf8,
+                    #6366f1,
+                    #38bdf8);
+            position: relative;
+            z-index: 3;
+            animation:
+                profileAppear 1s ease forwards,
+                profileGlow 3s ease-in-out infinite 1s;
+            opacity: 0;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #0f172a;
+            display: block;
+            transition:
+                transform 0.5s ease,
+                filter 0.5s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.08);
+            filter: brightness(1.1);
+        }
+
+        /* =====================================================
+           HERO TEXT
+        ====================================================== */
+        .hero h1 {
+            font-size: 58px;
+            color: #f8fafc;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation:
+                heroReveal 1s ease 0.4s forwards;
+        }
+
+        .hero h2 {
+            font-size: 28px;
+            color: #38bdf8;
+            margin-bottom: 20px;
+            min-height: 42px;
+            opacity: 0;
+            animation:
+                fadeDown 1s ease 0.8s forwards;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #cbd5e1;
+            font-size: 18px;
+            opacity: 0;
+            animation:
+                fadeUp 1s ease 1.1s forwards;
+        }
+
+        /* =====================================================
+           BUTTONS
+        ====================================================== */
+        .buttons {
+            margin-top: 30px;
+            opacity: 0;
+            animation:
+                fadeUp 1s ease 1.4s forwards;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 8px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.35s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .primary {
+            background: #38bdf8;
+            color: #0f172a;
+            box-shadow:
+                0 0 0 rgba(56, 189, 248, 0);
+        }
+
+        .secondary {
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+        }
+
+        .btn:hover {
+            transform:
+                translateY(-5px) scale(1.03);
+        }
+
+        .primary:hover {
+            box-shadow:
+                0 0 15px rgba(56, 189, 248, 0.6),
+                0 0 35px rgba(56, 189, 248, 0.3);
+        }
+
+        .secondary:hover {
+            background: #38bdf8;
+            color: #0f172a;
+            box-shadow:
+                0 0 20px rgba(56, 189, 248, 0.4);
+        }
+
+        /* =====================================================
+           GENERAL SECTIONS
+        ====================================================== */
+        section {
+            padding: 90px 8%;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 45px;
+            color: #38bdf8;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 3px;
+            margin: 10px auto 0;
+            background: #38bdf8;
+            transition:
+                width 0.8s ease;
+        }
+
+        section:hover .section-title::after {
+            width: 70px;
+        }
+
+        /* =====================================================
+           ABOUT
+        ====================================================== */
+        .about {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+            font-size: 18px;
+            color: #cbd5e1;
+            opacity: 0;
+            transform:
+                translateY(40px);
+            transition:
+                0.8s ease;
+        }
+
+        .about.show {
+            opacity: 1;
+            transform:
+                translateY(0);
+        }
+
+        /* =====================================================
+           SKILLS
+        ====================================================== */
+        .skills-container {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit,
+                    minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            transition:
+                0.4s;
+            opacity: 0;
+            transform:
+                translateY(50px);
+        }
+
+        .skill-card.show {
+            opacity: 1;
+            transform:
+                translateY(0);
+        }
+
+        .skill-card:hover {
+            transform:
+                translateY(-10px) scale(1.02);
+            border-color:
+                #38bdf8;
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(56, 189, 248, 0.12);
+        }
+
+        .skill-card h3 {
+            color: #38bdf8;
+            margin-bottom: 12px;
+        }
+
+        .skill-card p {
+            color: #cbd5e1;
+        }
+
+        /* =====================================================
+           EXPERIENCE
+        ====================================================== */
+        .experience {
+            max-width: 900px;
+            margin: auto;
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 15px;
+            border-left:
+                5px solid #38bdf8;
+            opacity: 0;
+            transform:
+                translateX(-70px);
+            transition:
+                0.8s ease;
+        }
+
+        .experience.show {
+            opacity: 1;
+            transform:
+                translateX(0);
+        }
+
+        .experience:hover {
+            transform:
+                translateY(-5px);
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .experience h3 {
+            color: #38bdf8;
+            font-size: 24px;
+        }
+
+        .experience h4 {
+            margin:
+                5px 0 15px;
+            color: #f8fafc;
+        }
+
+        .experience ul {
+            padding-left: 20px;
+            color: #cbd5e1;
+        }
+
+        .experience li {
+            margin: 8px 0;
+            transition: 0.3s;
+        }
+
+        .experience li:hover {
+
+            color: #38bdf8;
+
+            transform:
+                translateX(5px);
+        }
+
+
+        /* =====================================================
+           PROJECTS
+        ====================================================== */
+
+        .projects {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit,
+                    minmax(280px, 1fr));
+
+            gap: 25px;
+        }
+
+
+        .project-card {
+
+            background: #1e293b;
+
+            padding: 28px;
+
+            border-radius: 15px;
+
+            border:
+                1px solid #334155;
+
+            transition:
+                0.4s;
+
+            opacity: 0;
+
+            transform:
+                translateY(60px);
+        }
+
+
+        .project-card.show {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+
+        .project-card:hover {
+
+            transform:
+                translateY(-10px);
+
+            border-color:
+                #38bdf8;
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.35),
+
+                0 0 20px rgba(56, 189, 248, 0.1);
+        }
+
+
+        .project-card h3 {
+
+            color: #38bdf8;
+
+            margin-bottom: 12px;
+        }
+
+
+        .project-card p {
+
+            color: #cbd5e1;
+
+            margin-bottom: 15px;
+        }
+
+
+        .tech {
+
+            font-size: 14px;
+
+            color: #7dd3fc !important;
+
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           EDUCATION
+        ====================================================== */
+
+        .education-card {
+
+            max-width: 700px;
+
+            margin: auto;
+
+            text-align: center;
+
+            background: #1e293b;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            transition:
+                0.4s;
+
+            opacity: 0;
+
+            transform:
+                scale(0.9);
+        }
+
+
+        .education-card.show {
+
+            opacity: 1;
+
+            transform:
+                scale(1);
+        }
+
+
+        .education-card:hover {
+
+            transform:
+                translateY(-8px) scale(1.02);
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.3);
+
+            border:
+                1px solid #38bdf8;
+        }
+
+
+        .education-card h3 {
+
+            color: #38bdf8;
+
+            font-size: 24px;
+        }
+
+
+        /* =====================================================
+           CERTIFICATIONS
+        ====================================================== */
+
+        .certifications {
+
+            max-width: 800px;
+
+            margin: auto;
+        }
+
+
+        .certifications li {
+
+            background: #1e293b;
+
+            margin: 12px 0;
+
+            padding: 15px 20px;
+
+            border-radius: 8px;
+
+            list-style: none;
+
+            border-left:
+                4px solid #38bdf8;
+
+            opacity: 0;
+
+            transform:
+                translateX(50px);
+
+            transition:
+                0.5s;
+        }
+
+
+        .certifications li.show {
+
+            opacity: 1;
+
+            transform:
+                translateX(0);
+        }
+
+
+        .certifications li:hover {
+
+            transform:
+                translateX(8px);
+
+            background: #243449;
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+
+        /* =====================================================
+           CONTACT
+        ====================================================== */
+
+        .contact {
+
+            text-align: center;
+
+            opacity: 0;
+
+            transform:
+                translateY(30px);
+
+            transition:
+                0.8s ease;
+        }
+
+
+        .contact.show {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+
+        .contact p {
+
+            margin: 10px;
+
+            color: #cbd5e1;
+
+            transition:
+                0.4s;
+        }
+
+
+        .contact p:hover {
+
+            transform:
+                translateY(-3px);
+        }
+
+
+        .contact a {
+
+            color: #38bdf8;
+
+            text-decoration: none;
+
+            transition:
+                0.3s;
+        }
+
+
+        .contact a:hover {
+
+            color: #7dd3fc;
+
+            text-shadow:
+                0 0 10px rgba(56, 189, 248, 0.5);
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        footer {
+
+            text-align: center;
+
+            padding: 25px;
+
+            background: #020617;
+
+            color: #94a3b8;
+        }
+
+
+        /* =====================================================
+           ANIMATIONS
+        ====================================================== */
+
+        @keyframes navbarDown {
+
+            from {
+
+                opacity: 0;
+                transform:
+                    translateY(-100%);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0);
+            }
+        }
+
+        @keyframes navLink {
+            from {
+                opacity: 0;
+                transform:
+                    translateY(-15px);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0);
+            }
+        }
+
+        @keyframes logoGlow {
+            from {
+                text-shadow:
+                    0 0 5px rgba(56, 189, 248, 0.2);
+            }
+
+            to {
+                text-shadow:
+                    0 0 10px rgba(56, 189, 248, 0.7),
+                    0 0 20px rgba(56, 189, 248, 0.3);
+            }
+        }
+
+        @keyframes profileAppear {
+            from {
+                opacity: 0;
+                transform:
+                    scale(0.5) rotate(-20deg);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes profileGlow {
+            0% {
+                box-shadow:
+                    0 0 10px rgba(56, 189, 248, 0.3);
+            }
+
+            50% {
+                box-shadow:
+                    0 0 30px rgba(56, 189, 248, 0.7),
+                    0 0 50px rgba(99, 102, 241, 0.3);
+            }
+
+            100% {
+                box-shadow:
+                    0 0 10px rgba(56, 189, 248, 0.3);
+            }
+        }
+
+        @keyframes heroReveal {
+            from {
+                opacity: 0;
+                transform:
+                    translateY(-40px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0) scale(1);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform:
+                    translateY(-25px);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform:
+                    translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0);
+            }
+        }
+
+        @keyframes floating {
+
+            0%,
+            100% {
+                transform:
+                    translate(0, 0);
+            }
+
+            50% {
+                transform:
+                    translate(30px, -40px);
+            }
+        }
+
+        @keyframes floating2 {
+
+            0%,
+            100% {
+                transform:
+                    translate(0, 0);
+            }
+
+            50% {
+                transform:
+                    translate(-35px, 30px);
+            }
+        }
+
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+                padding:
+                    15px 5%;
+            }
+
+            nav .logo {
+                font-size: 20px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content:
+                    center;
+            }
+
+            nav ul li a {
+                font-size: 13px;
+            }
+
+            .hero {
+                padding-top: 160px;
+            }
+
+            .profile-image-container {
+                width: 135px;
+                height: 135px;
+                margin-bottom: 20px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero h2 {
+                font-size: 22px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            section {
+                padding:
+                    70px 5%;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+
+            .skills-container,
+            .projects {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .experience {
+                padding: 22px;
+            }
+
+            .education-card {
+                padding: 22px;
+            }
+
+            .hero::before {
+                width: 150px;
+                height: 150px;
+            }
+
+            .hero::after {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        /* =====================================================
+           REDUCED MOTION
+        ====================================================== */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration:
+                    0.01ms !important;
+                animation-iteration-count:
+                    1 !important;
+                transition-duration:
+                    0.01ms !important;
+                scroll-behavior:
+                    auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+    <nav>
+        <div class="logo">
+            DHANAVIDHYA J
+        </div>
+        <ul>
+            <li>
+                <a href="#home" class="active">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="#about">
+                    About
+                </a>
+            </li>
+            <li>
+                <a href="#skills">
+                    Skills
+                </a>
+            </li>
+            <li>
+                <a href="#experience">
+                    Experience
+                </a>
+            </li>
+            <li>
+                <a href="#projects">
+                    Projects
+                </a>
+            </li>
+            <li>
+                <a href="#education">
+                    Education
+                </a>
+            </li>
+            <li>
+                <a href="#contact">
+                    Contact
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <!-- PROFILE PHOTO -->
+            <div class="profile-image-container">
+                <img src="./Dhana.jpeg" alt="Dhanavidhya J - Data Analyst" class="profile-image">
+            </div>
+            <h1>
+                Dhanavidhya J
+            </h1>
+            <h2 id="typing">
+                Data Analyst
+            </h2>
+            <p>
+                Turning raw data into meaningful insights
+                and interactive dashboards using SQL,
+                Power BI, Excel and Python.
+            </p>
+            <div class="buttons">
+                <a href="#projects" class="btn primary">
+                    View My Projects
+                </a>
+                <a href="#contact" class="btn secondary">
+                    Contact Me
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- =====================================================
+         ABOUT
+    ====================================================== -->
+    <section id="about">
+        <h2 class="section-title">
+            About Me
+        </h2>
+        <div class="about">
+            <p>
+                I am an aspiring Data Analyst with strong
+                skills in SQL, Power BI, Excel and data
+                visualization.
+                I have experience developing interactive
+                dashboards, performing data cleaning,
+                transformation, exploratory analysis and
+                ad-hoc analysis.
+            </p>
+            <br>
+            <p>
+                My goal is to transform raw data into
+                actionable insights that support business
+                decision-making and reporting.
+            </p>
+        </div>
+    </section>
+    <!-- =====================================================
+         SKILLS
+    ====================================================== -->
+    <section id="skills">
+        <h2 class="section-title">
+            Technical Skills
+        </h2>
+        <div class="skills-container">
+            <div class="skill-card">
+                <h3>
+                    SQL
+                </h3>
+                <p>
+                    Joins, CTEs, Subqueries, Views,
+                    Window Functions, Aggregate Functions,
+                    CASE Statements and Query Optimization.
+                </p>
+            </div>
+            <div class="skill-card">
+                <h3>
+                    Power BI
+                </h3>
+                <p>
+                    Power Query, DAX, Data Modeling,
+                    Star Schema, KPI Dashboards,
+                    Interactive Reports, RLS and
+                    Drill-through.
+                </p>
+            </div>
+            <div class="skill-card">
+                <h3>
+                    Excel
+                </h3>
+                <p>
+                    VLOOKUP, XLOOKUP, INDEX-MATCH,
+                    SUMIFS, COUNTIFS, PivotTables,
+                    PivotCharts and Dashboard Development.
+                </p>
+            </div>
+            <div class="skill-card">
+                <h3>
+                    Python
+                </h3>
+                <p>
+                    Python, Pandas, NumPy, Matplotlib,
+                    Data Cleaning, Data Manipulation
+                    and Data Analysis.
+                </p>
+            </div>
+            <div class="skill-card">
+                <h3>
+                    Databases
+                </h3>
+                <p>
+                    MySQL, RDBMS, Relational Database
+                    Design, Data Modeling, Normalization
+                    and Data Integrity.
+                </p>
+            </div>
+            <div class="skill-card">
+                <h3>
+                    Data Visualization
+                </h3>
+                <p>
+                    Power BI, Tableau, Excel Dashboards,
+                    KPI Visualization, Charts and
+                    Data Storytelling.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- =====================================================
+         EXPERIENCE
+    ====================================================== -->
+    <section id="experience">
+        <h2 class="section-title">
+            Experience
+        </h2>
+        <div class="experience">
+            <h3>
+                Data Analyst Intern
+            </h3>
+            <h4>
+                BDreamz Global Solution, Chennai
+            </h4>
+            <p>
+                February 2026 – Present
+            </p>
+            <br>
+            <ul>
+                <li>
+                    Developed SQL queries for data
+                    extraction, transformation and analysis.
+                </li>
+                <li>
+                    Created complex joins and subqueries
+                    to generate business insights.
+                </li>
+                <li>
+                    Used Microsoft Excel for data cleaning
+                    and analysis using VLOOKUP, INDEX-MATCH,
+                    IF, COUNTIF and SUMIF.
+                </li>
+                <li>
+                    Designed interactive dashboards and
+                    reports using Power BI Desktop.
+                </li>
+                <li>
+                    Performed data transformation using
+                    Power Query.
+                </li>
+                <li>
+                    Connected Power BI with Excel,
+                    SQL databases and CSV files.
+                </li>
+                <li>
+                    Implemented scheduled data refresh
+                    and Row Level Security for reports.
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!-- =====================================================
+         PROJECTS
+    ====================================================== -->
+    <section id="projects">
+        <h2 class="section-title">
+            Projects
+        </h2>
+        <div class="projects">
+            <!-- PROJECT 1 -->
+            <div class="project-card">
+                <h3>
+                    Global Fuel Price Analysis Dashboard
+                </h3>
+                <p>
+                    Interactive Power BI dashboard analyzing
+                    global fuel prices across countries
+                    and regions.
+                </p>
+                <p>
+                    Analyzed petrol, diesel, LPG prices,
+                    tax percentage, crude oil price,
+                    inflation rate and fuel demand/supply.
+                </p>
+                <p class="tech">
+                    Power BI • Power Query • DAX •
+                    Data Visualization
+                </p>
+            </div>
+            <!-- PROJECT 2 -->
+            <div class="project-card">
+                <h3>
+                    Global CVD Burden Analysis
+                </h3>
+                <p>
+                    Analyzed 1,300+ records across
+                    73 countries from 2021–2026
+                    to identify cardiovascular
+                    disease trends.
+                </p>
+                <p>
+                    Used Excel functions and data
+                    aggregation techniques to derive
+                    actionable insights.
+                </p>
+                <p class="tech">
+
+                    Excel • SUMIFS • COUNTIFS •
+                    INDEX-MATCH • VLOOKUP
+
+                </p>
+            </div>
+            <!-- PROJECT 3 -->
+            <div class="project-card">
+                <h3>
+                    Bank Management System
+                </h3>
+                <p>
+                    Designed a relational database
+                    schema for banking operations.
+                </p>
+                <p>
+                    Developed SQL queries for customer
+                    segmentation, loan analysis,
+                    account insights and reporting.
+                </p>
+                <p class="tech">
+                    MySQL • SQL • Relational Database •
+                    Data Modeling
+                </p>
+            </div>
+            <!-- PROJECT 4 -->
+            <div class="project-card">
+                <h3>
+                    Besant Enquiry Management Dashboard
+                </h3>
+                <p>
+                    Developed an interactive Power BI
+                    dashboard to analyze student
+                    enrollment, attendance, course
+                    performance and placement trends.
+                </p>
+                <p>
+                    Created KPI cards, charts, slicers
+                    and DAX measures.
+                </p>
+                <p class="tech">
+                    Power BI • Power Query • DAX •
+                    Data Modeling
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- =====================================================
+         EDUCATION
+    ====================================================== -->
+    <section id="education">
+        <h2 class="section-title">
+            Education
+        </h2>
+        <div class="education-card">
+            <h3>
+                B.Tech – Artificial Intelligence
+                and Data Science
+            </h3>
+            <p>
+                Muthayammal College of Engineering
+            </p>
+            <p>
+                2022 – 2026
+            </p>
+            <br>
+            <strong>
+                CGPA: 7.69
+            </strong>
+        </div>
+    </section>
+    <!-- =====================================================
+         CERTIFICATIONS
+    ====================================================== -->
+    <section id="certifications">
+        <h2 class="section-title">
+            Certifications
+        </h2>
+        <ul class="certifications">
+            <li>
+                Data Analytics – NoviTech R&D
+                Private Limited
+            </li>
+            <li>
+                HackerRank – SQL (Basic)
+                Certification
+            </li>
+            <li>
+                Power Query Essentials –
+                Shaping and Transforming Data
+            </li>
+            <li>
+                Raw Data to Dynamic Dashboards
+                in Excel – Bootcamp
+            </li>
+            <li>
+                Data Analytics – Webinar
+            </li>
+            <li>
+                Tableau – Besant Technologies
+            </li>
+        </ul>
+    </section>
+    <!-- =====================================================
+         CONTACT
+    ====================================================== -->
+    <section id="contact">
+        <h2 class="section-title">
+            Let's Connect
+        </h2>
+        <div class="contact">
+            <p>
+                📧
+                <a href="mailto:dhanavidhya2202@gmail.com">
+                    dhanavidhya2202@gmail.com
+                </a>
+            </p>
+            <p>
+                📱 8148657249
+            </p>
+            <p>
+                📍 Velachery, Chennai
+            </p>
+            <p>
+                🔗
+                <a href="https://linkedin.com/in/dhanavidhya-j-b4952b223" target="_blank" rel="noopener noreferrer">
+                    LinkedIn
+                </a>
+            </p>
+            <p>
+                💻
+                <a href="https://github.com/Dhanavidhya2202/Dhanavidhya" target="_blank" rel="noopener noreferrer">
+                    GitHub
+                </a>
+            </p>
+        </div>
+    </section>
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+    <footer>
+        <p>
+            © 2026 Dhanavidhya J |
+            Data Analyst Portfolio
+        </p>
+    </footer>
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+    <script>
+        /* =====================================================
+           SCROLL REVEAL
+        ====================================================== */
+        const animatedElements =
+            document.querySelectorAll(
+                ".about, .skill-card, .experience, " +
+                ".project-card, .education-card, " +
+                ".certifications li, .contact"
+            );
+        const observer =
+            new IntersectionObserver(
+                (entries) => {
+                    entries.forEach(
+                        (entry) => {
+                            if (
+                                entry.isIntersecting
+                            ) {
+                                entry.target
+                                    .classList
+                                    .add("show");
+                            }
+                        }
+                    );
+                },
+                {
+                    threshold: 0.15
+                }
+            );
+        animatedElements.forEach(
+            (element) => {
+                observer.observe(element);
+            }
+        );
+        /* =====================================================
+           SKILL CARD DELAY
+        ====================================================== */
+        document
+            .querySelectorAll(".skill-card")
+            .forEach(
+                (card, index) => {
+                    card.style.transitionDelay =
+                        `${index * 0.12}s`;
+                }
+            );
+        /* =====================================================
+           PROJECT CARD DELAY
+        ====================================================== */
+        document
+            .querySelectorAll(".project-card")
+            .forEach(
+                (card, index) => {
+                    card.style.transitionDelay =
+                        `${index * 0.15}s`;
+                }
+            );
+        /* =====================================================
+           CERTIFICATION DELAY
+        ====================================================== */
+        document
+            .querySelectorAll(".certifications li")
+            .forEach(
+                (item, index) => {
+                    item.style.transitionDelay =
+                        `${index * 0.1}s`;
+                }
+            );
+        /* =====================================================
+           TYPING ANIMATION
+        ====================================================== */
+        const typingElement =
+            document.getElementById("typing");
+        const typingText =
+            "Data Analyst";
+        let typingIndex = 0;
+        function typeText() {
+            if (
+                typingIndex <
+                typingText.length
+            ) {
+                typingElement.textContent =
+                    typingText.substring(
+                        0,
+                        typingIndex + 1
+                    );
+                typingIndex++;
+                setTimeout(
+                    typeText,
+                    120
+                );
+            }
+        }
+        setTimeout(
+            () => {
+                typingElement.textContent =
+                    "";
+                typeText();
+            },
+            1600
+        );
+        /* =====================================================
+           ACTIVE NAVIGATION
+        ====================================================== */
+        const sections =
+            document.querySelectorAll(
+                "section"
+            );
+        const navLinks =
+            document.querySelectorAll(
+                "nav ul li a"
+            );
+        window.addEventListener(
+            "scroll",
+            () => {
+                let currentSection =
+                    "";
+                sections.forEach(
+                    (section) => {
+                        const sectionTop =
+                            section.offsetTop -
+                            150;
+                        const sectionHeight =
+                            section.clientHeight;
+                        if (
+                            window.scrollY >=
+                            sectionTop &&
+                            window.scrollY <
+                            sectionTop +
+                            sectionHeight
+                        ) {
+                            currentSection =
+                                section
+                                    .getAttribute(
+                                        "id"
+                                    );
+                        }
+                    }
+                );
+                navLinks.forEach(
+                    (link) => {
+                        link.classList
+                            .remove(
+                                "active"
+                            );
+                        if (
+                            link.getAttribute(
+                                "href"
+                            ) ===
+                            "#" +
+                            currentSection
+                        ) {
+                            link.classList
+                                .add(
+                                    "active"
+                                );
+                        }
+                    }
+                );
+            }
+        );
+        /* =====================================================
+           HERO PARALLAX
+        ====================================================== */
+        const hero =
+            document.querySelector(
+                ".hero"
+            );
+        hero.addEventListener(
+            "mousemove",
+            (event) => {
+                const x =
+                    (
+                        window.innerWidth / 2 -
+                        event.clientX
+                    ) / 40;
+                const y =
+                    (
+                        window.innerHeight / 2 -
+                        event.clientY
+                    ) / 40;
+                hero.style.backgroundPosition =
+                    `${x}px ${y}px`;
+            }
+        );
+        hero.addEventListener(
+            "mouseleave",
+            () => {
+                hero.style.backgroundPosition =
+                    "center";
+            }
+        );
+        /* =====================================================
+           SMOOTH NAVIGATION
+        ====================================================== */
+        document
+            .querySelectorAll(
+                'nav a[href^="#"]'
+            )
+            .forEach(
+                (link) => {
+                    link.addEventListener(
+                        "click",
+                        function (event) {
+                            event.preventDefault();
+                            const target =
+                                document.querySelector(
+                                    this.getAttribute(
+                                        "href"
+                                    )
+                                );
+                            if (target) {
+                                target.scrollIntoView(
+                                    {
+                                        behavior:
+                                            "smooth",
+                                        block:
+                                            "start"
+                                    }
+                                );
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+    </script>
+</body>
+
+</html>
